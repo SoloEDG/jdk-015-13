@@ -429,6 +429,128 @@ input[type="checkbox"] {
 .scene-row.active kbd {
   color: #bc9ae9;
 }
+.scene-block {
+  margin: 3px 0;
+}
+.scene-meta {
+  min-width: 0;
+}
+.scene-meta small {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.entrance-edit-btn {
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px;
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  color: #9b8fbd;
+  background: #1a1824;
+}
+.entrance-edit-btn.open {
+  color: #d4c8ff;
+  background: #2b2540;
+  border-color: #5d4f80;
+}
+.entrance-editor {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #35304a;
+  border-radius: 7px;
+  background: #181623;
+}
+.editor-note {
+  font-size: 9px;
+  line-height: 1.6;
+  color: #8f86ad;
+  margin-bottom: 10px;
+}
+.entrance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.entrance-choice {
+  padding: 8px 6px;
+  font-size: 9px;
+  color: #9490a6;
+  background: #1f1d2a;
+}
+.entrance-choice.small {
+  padding: 6px;
+}
+.entrance-choice i {
+  font-style: normal;
+  margin-right: 5px;
+  color: #c6b3f5;
+}
+.unit-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.entrance-duration {
+  margin-top: 10px;
+}
+.duration-convert {
+  display: block;
+  font-size: 9px;
+  color: #7c7890;
+  margin-top: 2px;
+}
+.duration-convert em {
+  color: #e0a27a;
+}
+.editor-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-top: 12px;
+}
+.editor-actions button {
+  padding: 7px 4px;
+  font-size: 9px;
+}
+.preview-btn {
+  background: #332b49;
+  border-color: #66588c;
+  color: #d9ccfa;
+}
+.stop-preview-btn {
+  color: #b79a9a;
+}
+.save-btn {
+  background: #b4a1ef;
+  color: #1c1528;
+  border-color: transparent;
+}
+.transition-hud,
+.preview-hud {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 6;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font: 8px "Space Grotesk";
+  letter-spacing: 1.2px;
+  pointer-events: none;
+}
+.transition-hud {
+  background: #241f38e0;
+  color: #cdbbf8;
+  border: 1px solid #6a5a94;
+}
+.preview-hud {
+  top: 48px;
+  background: #3a2330e0;
+  color: #ffc9d8;
+  border: 1px solid #8c5568;
+}
 .stage-shell {
   border: 1px solid #34303e;
   background: #101117;

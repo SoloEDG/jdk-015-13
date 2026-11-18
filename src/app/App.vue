@@ -11,6 +11,7 @@ import {
 import { createDocument } from "../shared/document";
 import { createAudio, AudioPanel } from "../features/audio";
 import { StageCanvas, ThemePanel } from "../features/visuals";
+import type { StageApi } from "../features/visuals/model/renderer";
 import { createScenes, ScenePanel, SceneStrip } from "../features/scenes";
 import {
   createControls,
@@ -25,7 +26,8 @@ const doc = createDocument(),
   controls = createControls(doc),
   recorder = createRecorder();
 const canvas = ref<HTMLCanvasElement>(),
-  stage = ref<HTMLElement>();
+  stage = ref<HTMLElement>(),
+  stageApi = ref<StageApi | null>(null);
 const fullError = ref("");
 const unbind = bindShortcuts({
   play: () => {
@@ -83,6 +85,8 @@ onUnmounted(() => {
         <AudioPanel :engine="audio" :doc="doc" /><ScenePanel
           :doc="doc"
           :store="scenes"
+          :stage="stageApi"
+          :bpm="controls.bpm.value"
         />
       </aside>
       <div class="center-column">
@@ -101,7 +105,9 @@ onUnmounted(() => {
             <StageCanvas
               :doc="doc"
               :read="() => audio.frame.value"
+              :bpm="() => controls.bpm.value"
               @ready="canvas = $event"
+              @stage="stageApi = $event"
             />
             <div class="stage-caption">
               <small
@@ -109,6 +115,16 @@ onUnmounted(() => {
                   doc.scenes.findIndex((s) => s.id === doc.activeId) + 1
                 }}</small
               ><span>{{ scenes.active.value.name }}</span>
+            </div>
+            <div
+              v-if="stageApi?.engine.hud.liveContractId"
+              class="transition-hud"
+            >
+              CONTRACT #{{ stageApi.engine.hud.contractId }} · 转场中
+              {{ Math.round(stageApi.engine.hud.progress * 100) }}%
+            </div>
+            <div v-if="stageApi?.engine.hud.previewing" class="preview-hud">
+              入场草稿预演中 · 不影响正式输出
             </div>
             <span class="canvas-resolution">16:9 · 1280 × 720</span>
           </div>
